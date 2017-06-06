@@ -6,10 +6,11 @@
 #include "histonotes.h"
 #include "mainwindow.h"
 #include "relation.h"
+#include "fenprincipale.h"
 
 int main(int argc, char *argv[]) {
 QApplication app(argc, argv);
-
+/*
 MainWindow w;
 
 Article a=Article("id_a","titreee", "salut tout le monde");
@@ -36,6 +37,10 @@ Article* a2=m.getHistoArticle()->getLastVersion();
 
 ArticleEditeur fenetre(*a2);
 w.show();
+*/
+
+FenetrePrincipale fenetre;
+    fenetre.show();
 
 return app.exec();
 

@@ -8,7 +8,11 @@ HEADERS += \
     noteediteur.h \
     histonotes.h \
     mainwindow.h \
-    relation.h
+    relation.h \
+    fenetrecreerarticle.h \
+    fenetrecreernotes.h \
+    fenprincipale.h
+
 
 SOURCES += \
     notes.cpp \
@@ -16,7 +20,10 @@ SOURCES += \
     noteediteur.cpp \
     histonotes.cpp \
     mainwindow.cpp \
-    relation.cpp
+    relation.cpp \
+    fenetrecreerarticle.cpp \
+    fenetrecreernotes.cpp \
+    fenprincipale.cpp
 
 FORMS += \
     mainwindow.ui

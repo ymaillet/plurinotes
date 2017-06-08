@@ -4,7 +4,12 @@
 #include <QString>
 #include <QDateTime>
 #include <QDate>
-
+#include <iostream>
+#include <QString>
+#include <QtWidgets>
+#include <QMovie>
+//#include <QSound>
+#include <QImage>
 
 class Notes
 {
@@ -15,10 +20,9 @@ private :
     QDateTime dateCrea;
 public:
 
-    Notes(const QString i, const QString t) : id(i), titre(t) {
-         //dateModif=currentDateTime;
-         //dateCrea=currentDateTime;
-    }
+    Notes(const QString i, const QString t) : id(i), titre(t),
+         dateCrea(QDate::currentDate()), dateModif(QDate::currentDate()){}
+
 
 
 
@@ -90,5 +94,67 @@ class Tache : public Notes {
 };
 
 //gérer multimedia
+
+class Multimedia : public Notes {
+    private :
+        QString description;
+        QString fichierImage;
+
+    public :
+        Multimedia(const QString& i, const QString& t, const QString& d, const QString& f)    //Constructeur qui prend id, titre, description et fichier image
+                :Notes(i,t),description(d),fichierImage(f){}
+            ~Multimedia(){}
+
+        //Accesseur en ecriture
+            void setDescription(const QString& str) {description = str;}
+            void setFichier(const QString& str) {fichierImage = str;}
+
+        //Accesseur en lecture constante
+            const QString& getDescription() const {return description;}
+            const QString& getFichier() const {return fichierImage;}
+
+
+        //Accesseurs en lecture non const
+            QString& getDescription() {return description;}
+            QString& getFichier() {return fichierImage;}
+
+};
+
+
+class Video : public Multimedia {
+    private :
+        QMovie* fichierVideo;
+        Video(const QString& i, const QString& t, const QString& D, const QString& F)
+                :Multimedia(i,t,D,F){}
+    public :
+
+        void afficher();
+        ~Video(){}
+};
+
+class Audio : public Multimedia {
+    private :
+       // QSound* fichierAudio;
+        Audio(const QString& i, const QString& t, const QString& D, const QString& F)
+                :Multimedia(i,t,D,F){}
+    public :
+        void afficher();
+        ~Audio(){}
+};
+
+
+class Image : public Multimedia {
+private :
+        QImage* fichierImage;
+        Image(const QString& i, const QString& t, const QString& D, const QString& F)
+                :Multimedia(i,t,D,F){}
+
+public :
+        void afficher();
+        ~Image(){}
+};
+
+
+
 
 #endif // NOTES_H
